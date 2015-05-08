@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>sql查询优化小结 | Findnow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. SQL优化的原则是：将一次操作需要读取的BLOCK数减到最低,即在最短的时间达到最大的数据吞吐量。
+调整不良SQL通常可以从以下几点切入：
+
+检查不良的SQL，考虑其写法是否还有可优化内容
+检查子查询 考虑SQL子查询是否可以用简单连接的方式进行重新书写
+检查优化索引的使用
+考虑数据库的优化器2. 避免出现SELECT * FROM table 语句，要明确查出的字段。
+
+3. 在一个SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql查询优化小结">
+<meta property="og:url" content="http://xurw.com/2013/03/16/sql_optimize/index.html">
+<meta property="og:site_name" content="Findnow">
+<meta property="og:description" content="1. SQL优化的原则是：将一次操作需要读取的BLOCK数减到最低,即在最短的时间达到最大的数据吞吐量。
+调整不良SQL通常可以从以下几点切入：
+
+检查不良的SQL，考虑其写法是否还有可优化内容
+检查子查询 考虑SQL子查询是否可以用简单连接的方式进行重新书写
+检查优化索引的使用
+考虑数据库的优化器2. 避免出现SELECT * FROM table 语句，要明确查出的字段。
+
+3. 在一个SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql查询优化小结">
+<meta name="twitter:description" content="1. SQL优化的原则是：将一次操作需要读取的BLOCK数减到最低,即在最短的时间达到最大的数据吞吐量。
+调整不良SQL通常可以从以下几点切入：
+
+检查不良的SQL，考虑其写法是否还有可优化内容
+检查子查询 考虑SQL子查询是否可以用简单连接的方式进行重新书写
+检查优化索引的使用
+考虑数据库的优化器2. 避免出现SELECT * FROM table 语句，要明确查出的字段。
+
+3. 在一个SQL">
+  
+  
+    <link rel="icon" href="/logo.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+  
+  
+
+
+  
+    <style type="text/css">
+      .logo { background-image:url(/logo_header.png); }
+    </style>
+  
+    <link href='/css/fonts_useso.css' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">All about victor, hellen, yasir on life,  management and others.</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">主页</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/其它/">其它</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/家庭生活/">家庭生活</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/运营管理/">运营管理</a></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/aboutus/index.html">关于我们</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="q" value="site:http://xurw.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/其它/">其它</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-sql_optimize" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      sql查询优化小结
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2013/03/16/sql_optimize/" class="article-date">
+  <time datetime="2013-03-15T16:11:35.000Z" itemprop="datePublished">2013-03-16</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>1. SQL优化的原则是：将一次操作需要读取的BLOCK数减到最低,即在最短的时间达到最大的数据吞吐量。</p>
+<p>调整不良SQL通常可以从以下几点切入：</p>
+<ul>
+<li>检查不良的SQL，考虑其写法是否还有可优化内容</li>
+<li>检查子查询 考虑SQL子查询是否可以用简单连接的方式进行重新书写</li>
+<li>检查优化索引的使用</li>
+<li>考虑数据库的优化器<br>2. 避免出现SELECT * FROM table 语句，要明确查出的字段。</li>
+</ul>
+<p>3. 在一个SQL语句中，如果一个where条件过滤的数据库记录越多，定位越准确，则该where条件越应该前移。</p>
+<p>4. 查询时尽可能使用索引覆盖。即对SELECT的字段建立复合索引，这样查询时只进行索引扫描，不读取数据块。</p>
+<p>5. 在判断有无符合条件的记录时建议不要用SELECT COUNT （*）和select top 1 语句。</p>
+<p>6. 使用内层限定原则，在拼写SQL语句时，将查询条件分解、分类，并尽量在SQL语句的最里层进行限定，以减少数据的处理量。</p>
+<p>7. 应绝对避免在order by子句中使用表达式。</p>
+<p>8. 如果需要从关联表读数据，关联的表一般不要超过7个。</p>
+<p>9. 小心使用 IN 和 OR，需要注意In集合中的数据量。建议集合中的数据不超过200个。</p>
+<p>10. &lt;&gt; 用 &lt; 、 &gt; 代替，&gt;用&gt;=代替，&lt;用&lt;=代替，这样可以有效的利用索引。<br>11. 在查询时尽量减少对多余数据的读取包括多余的列与多余的行。</p>
+<p>12. 对于复合索引要注意，例如在建立复合索引时列的顺序是F1，F2，F3，则在where或order by子句中这些字段出现的顺序要与建立索引时的字段顺序一致，且必须包含第一列。只能是F1或F1，F2或F1，F2，F3。否则不会用到该索引。 </p>
+<p>13. 多表关联查询时，写法必须遵循以下原则，这样做有利于建立索引，提高查询效率。格式如下select sum（table1.je） from table1 table1, table2 table2, table3 table3 where (table1的等值条件（=）) and (table1的非等值条件) and (table2与table1的关联条件) and (table2的等值条件) and (table2的非等值条件) and (table3与table2的关联条件) and (table3的等值条件) and (table3的非等值条件)。 注:关于多表查询时from 后面表的出现顺序对效率的影响还有待研究。 </p>
+<p>14. 子查询问题。对于能用连接方式或者视图方式实现的功能，不要用子查询。例如：select name from customer where customer_id in ( select customer_id from order where money&gt;1000)。应该用如下语句代替：select name from customer inner join order on customer.customer_id=order.customer_id where order.money&gt;100。</p>
+<p>15. 在WHERE 子句中，避免对列的四则运算，特别是where 条件的左边，严禁使用运算与函数对列进行处理。比如有些地方 substring 可以用like代替。</p>
+<p>16. 如果在语句中有not in（in）操作，应考虑用not exists（exists）来重写,最好的办法是使用外连接实现。</p>
+<p>17. 对一个业务过程的处理，应该使事物的开始与结束之间的时间间隔越短越好，原则上做到数据库的读操作在前面完成，数据库写操作在后面完成，避免交叉。</p>
+<p>18. 请小心不要对过多的列使用列函数和order by,group by等，谨慎使用disti软件开发t。</p>
+<p>19. 用union all 代替 union，数据库执行union操作，首先先分别执行union两端的查询，将其放在临时表中，然后在对其进行排序，过滤重复的记录。</p>
+<p>当已知的业务逻辑决定query A和query B中不会有重复记录时，应该用union all代替union，以提高查询效率。</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://xurw.com/2013/03/16/sql_optimize/" data-id="ci9fc8cq9003aapwnifpgysfn" class="article-share-link">分享到</a>
+        
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+      </footer>
+    </div>
+  </article>
+  
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/victorwu113" target="_blank"><i id="icon-twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="facebook" href="https://www.facebook.com/wu.victor.526" target="_blank"><i id="icon-facebook" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google_plus" href="https://plus.google.com/u/0/" target="_blank"><i id="icon-google_plus" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/xurwxj" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/2514652212/profile?topnav=1&wvr=6" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/rss2.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/16/rule/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          蘑菇管理定律
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2013/03/16/monkey-patching-in-django/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">Monkey patching in Django</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/05/07/1test/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
+              <p class="item-title"><a href="/2015/05/07/1test/" class="title">通过atom来写文章</a></p>
+              <p class="item-date"><time datetime="2015-05-07T14:38:00.000Z" itemprop="datePublished">2015-05-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/01/07/2014summary/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/家庭生活/">家庭生活</a></p>
+              <p class="item-title"><a href="/2015/01/07/2014summary/" class="title">2014年度总结及2015希望</a></p>
+              <p class="item-date"><time datetime="2015-01-07T15:12:00.000Z" itemprop="datePublished">2015-01-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2014/10/29/git_blog/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
+              <p class="item-title"><a href="/2014/10/29/git_blog/" class="title">用github存放blog</a></p>
+              <p class="item-date"><time datetime="2014-10-29T01:54:08.000Z" itemprop="datePublished">2014-10-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2014/10/15/manage_memory_20141015/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/运营管理/">运营管理</a></p>
+              <p class="item-title"><a href="/2014/10/15/manage_memory_20141015/" class="title">20141015管理记忆</a></p>
+              <p class="item-date"><time datetime="2014-10-15T01:54:48.000Z" itemprop="datePublished">2014-10-15</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2014/09/01/manage_mind_20140901/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/运营管理/">运营管理</a></p>
+              <p class="item-title"><a href="/2014/09/01/manage_mind_20140901/" class="title">20140901管理方面的小思</a></p>
+              <p class="item-date"><time datetime="2014-09-01T02:01:22.000Z" itemprop="datePublished">2014-09-01</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/VPS/" style="font-size: 10px;">VPS</a><a href="/tags/Yasir/" style="font-size: 18.18px;">Yasir</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/django/" style="font-size: 11.82px;">django</a><a href="/tags/ftp/" style="font-size: 10px;">ftp</a><a href="/tags/js/" style="font-size: 10px;">js</a><a href="/tags/kvm/" style="font-size: 10px;">kvm</a><a href="/tags/linux/" style="font-size: 10.91px;">linux</a><a href="/tags/markdown/" style="font-size: 10px;">markdown</a><a href="/tags/node/" style="font-size: 10.91px;">node</a><a href="/tags/python/" style="font-size: 11.82px;">python</a><a href="/tags/sina/" style="font-size: 10px;">sina</a><a href="/tags/socket/" style="font-size: 10px;">socket</a><a href="/tags/sync/" style="font-size: 10px;">sync</a><a href="/tags/tech/" style="font-size: 10px;">tech</a><a href="/tags/victor/" style="font-size: 20px;">victor</a><a href="/tags/webkit/" style="font-size: 10px;">webkit</a><a href="/tags/weibo/" style="font-size: 10px;">weibo</a><a href="/tags/xp/" style="font-size: 10px;">xp</a><a href="/tags/主机/" style="font-size: 10.91px;">主机</a><a href="/tags/人力资源/" style="font-size: 10px;">人力资源</a><a href="/tags/企业文化/" style="font-size: 10.91px;">企业文化</a><a href="/tags/修身养性/" style="font-size: 14.55px;">修身养性</a><a href="/tags/博客/" style="font-size: 12.73px;">博客</a><a href="/tags/发展/" style="font-size: 10px;">发展</a><a href="/tags/同步/" style="font-size: 11.82px;">同步</a><a href="/tags/团队/" style="font-size: 10px;">团队</a><a href="/tags/年度/" style="font-size: 10.91px;">年度</a><a href="/tags/微博/" style="font-size: 12.73px;">微博</a><a href="/tags/总结/" style="font-size: 17.27px;">总结</a><a href="/tags/成功/" style="font-size: 15.45px;">成功</a><a href="/tags/技术/" style="font-size: 16.36px;">技术</a><a href="/tags/教育/" style="font-size: 16.36px;">教育</a><a href="/tags/照片/" style="font-size: 14.55px;">照片</a><a href="/tags/生活/" style="font-size: 12.73px;">生活</a><a href="/tags/空间/" style="font-size: 10px;">空间</a><a href="/tags/童趣/" style="font-size: 10px;">童趣</a><a href="/tags/管理/" style="font-size: 19.09px;">管理</a><a href="/tags/网络/" style="font-size: 13.64px;">网络</a><a href="/tags/虚拟/" style="font-size: 10px;">虚拟</a><a href="/tags/购物/" style="font-size: 10px;">购物</a><a href="/tags/车/" style="font-size: 11.82px;">车</a><a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.shining3d.cn" target="_blank">先临三维</a>
+          </li>
+        
+          <li>
+            <a href="http://www.dxy.cn" target="_blank">丁香园</a>
+          </li>
+        
+          <li>
+            <a href="http://www.espark.net" target="_blank">东部软件园</a>
+          </li>
+        
+          <li>
+            <a href="http://www.zhongda.com" target="_blank">浙江数码港</a>
+          </li>
+        
+          <li>
+            <a href="http://www.qfc.cn" target="_blank">轻纺城</a>
+          </li>
+        
+          <li>
+            <a href="http://www.cib.com.cn" target="_blank">兴业银行</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <a href="/" class="logo"></a>
+        &copy; 2015 Victor
+        Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    
+  <script src="/js/jquery-2.1.3.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
