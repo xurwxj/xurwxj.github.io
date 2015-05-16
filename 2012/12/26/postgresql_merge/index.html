@@ -5,6 +5,7 @@
   
   <title>postgresql中将多行记录合并为一个字符串 | Findnow</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="referrer" content="always">
   <meta name="description" content="有时候需要将数据库中两个1:m关系的数据表进行转换为一个独立的表，可以这样处理：
 SELECT m.uuid, m.title, m.description, x.data,
  array_to_string(ARRAY( SELECT keyword.keyword FROM keyword
@@ -125,7 +126,7 @@ SELECT m.uuid, m.title, m.description, x.data,
 <p>在进行全文搜索的时候，就可以建立一个view来代表所需搜索的全文信息。</p>
       </div>
       <footer class="article-footer">
-        <!--<a data-url="http://xurw.com/2012/12/26/postgresql_merge/" data-id="ci9r5iz03004vic39wun8pnse" class="article-share-link">分享到</a>
+        <!--<a data-url="http://xurw.com/2012/12/26/postgresql_merge/" data-id="ci9r615rs004vj939aoul7xhh" class="article-share-link">分享到</a>
         -->
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
         <div class="bdsharebuttonbox">

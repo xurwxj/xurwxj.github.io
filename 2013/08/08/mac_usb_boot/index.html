@@ -5,6 +5,7 @@
   
   <title>Mac上制作USB启动盘 | Findnow</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="referrer" content="always">
   <meta name="description" content="hdiutil convert -format UDRW -o /path/to/generate/img/file /path/to/your/iso/file该命令会生成一个.img的磁盘镜像文件，但是mac osx会默认追加一个.dmg，即生成的文件后缀是.img.dmg，这个后缀没关系，可以忽略diskutil listdiskutil unmountDisk /dev/disk1dd i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上制作USB启动盘">
@@ -108,7 +109,7 @@
         <p>hdiutil convert -format UDRW -o /path/to/generate/img/file /path/to/your/iso/file<br>该命令会生成一个.img的磁盘镜像文件，但是mac osx会默认追加一个.dmg，即生成的文件后缀是.img.dmg，这个后缀没关系，可以忽略<br>diskutil list<br>diskutil unmountDisk /dev/disk1<br>dd if=ubuntu.img.dmg of=/dev/rdisk1 bs=1m<br>diskutil eject /dev/disk1</p>
       </div>
       <footer class="article-footer">
-        <!--<a data-url="http://xurw.com/2013/08/08/mac_usb_boot/" data-id="ci9r5iz2h0062ic39f5u7v17l" class="article-share-link">分享到</a>
+        <!--<a data-url="http://xurw.com/2013/08/08/mac_usb_boot/" data-id="ci9r615sj0062j939tz2kgdlz" class="article-share-link">分享到</a>
         -->
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
         <div class="bdsharebuttonbox">
