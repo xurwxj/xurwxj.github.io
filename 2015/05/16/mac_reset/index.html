@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>重装mac及一些记录 | Findnow</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="description" content="这次系统被扩崩后，发现mac的另外一个好处，只要有启动盘，安装的时候选择原来的硬盘，它会自动修复存在的问题，而你的数据、程序、设置都保留，这个是其它系统所难做到的。
+不过这次，我还是彻底备份数据重新安装了，因为经过多次的试验、测试，系统残留了很多不舒服的东西，原来是因为时间和数据原因，没有特别抽时间去弄，这次一并解决了。
+安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。1npm con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重装mac及一些记录">
+<meta property="og:url" content="http://xurw.com/2015/05/16/mac_reset/index.html">
+<meta property="og:site_name" content="Findnow">
+<meta property="og:description" content="这次系统被扩崩后，发现mac的另外一个好处，只要有启动盘，安装的时候选择原来的硬盘，它会自动修复存在的问题，而你的数据、程序、设置都保留，这个是其它系统所难做到的。
+不过这次，我还是彻底备份数据重新安装了，因为经过多次的试验、测试，系统残留了很多不舒服的东西，原来是因为时间和数据原因，没有特别抽时间去弄，这次一并解决了。
+安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。1npm con">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重装mac及一些记录">
+<meta name="twitter:description" content="这次系统被扩崩后，发现mac的另外一个好处，只要有启动盘，安装的时候选择原来的硬盘，它会自动修复存在的问题，而你的数据、程序、设置都保留，这个是其它系统所难做到的。
+不过这次，我还是彻底备份数据重新安装了，因为经过多次的试验、测试，系统残留了很多不舒服的东西，原来是因为时间和数据原因，没有特别抽时间去弄，这次一并解决了。
+安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。1npm con">
+  
+  
+    <link rel="icon" href="/logo.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+  
+  
+
+  
+    <style type="text/css">.logo{background-image:url(/logo_header.png)}</style><link href="/css/fonts_useso.css" rel="stylesheet" type="text/css">
+</head></html>
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">All about victor, hellen, yasir on life,  management and others.</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="/">主页</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/其它/">其它</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/家庭生活/">家庭生活</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/运营管理/">运营管理</a></li></ul>
+                  
+                <li class="main-nav-list-item"><a class="main-nav-list-link" href="/aboutus/index.html">关于我们</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+            <ul class="social-links">
+              
+                <li><a class="social-tooltip" title="twitter" href="https://twitter.com/victorwu113" target="_blank"><i id="icon-twitter" class="icon"></i></a></li>
+              
+                <li><a class="social-tooltip" title="facebook" href="https://www.facebook.com/wu.victor.526" target="_blank"><i id="icon-facebook" class="icon"></i></a></li>
+              
+                <li><a class="social-tooltip" title="google_plus" href="https://plus.google.com/u/0/" target="_blank"><i id="icon-google_plus" class="icon"></i></a></li>
+              
+                <li><a class="social-tooltip" title="github" href="https://github.com/xurwxj" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+              
+                <li><a class="social-tooltip" title="weibo" href="http://weibo.com/2514652212/profile?topnav=1&wvr=6" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+              
+                <li><a class="social-tooltip" title="rss" href="/rss2.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+              
+            </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/其它/">其它</a></h1>
+            </div>
+            <div class="main-body-content">
+              <article id="post-mac_reset" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          <h1 class="article-title" itemprop="name">
+      重装mac及一些记录
+    </h1>
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2015/05/16/mac_reset/" class="article-date">
+  <time datetime="2015-05-16T14:14:00.000Z" itemprop="datePublished">2015-05-16</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p>这次系统被扩崩后，发现mac的另外一个好处，只要有启动盘，安装的时候选择原来的硬盘，它会自动修复存在的问题，而你的数据、程序、设置都保留，这个是其它系统所难做到的。</p>
+<p>不过这次，我还是彻底备份数据重新安装了，因为经过多次的试验、测试，系统残留了很多不舒服的东西，原来是因为时间和数据原因，没有特别抽时间去弄，这次一并解决了。</p>
+<p>安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org</span><br></pre></td></tr></table></figure></p>
+<p>mongodb的replset不知道什么原因，除了一次配置成功外，试了好几次都有问题，而这个配置方法恰恰之前备份的时候漏掉了，那就直接用内置的吧，也够了。</p>
+<p>最近团队组建在技术团队方面进展不错，希望能组成一个创造力、执行力超强的技术团队，打造一个让大家都有成就感的专业产品，在指定领域的互联网范围内引领。</p>
+<p>在这里，再次呼唤Noder们来加入。</p>
+<p><a href="https://cnodejs.org/topic/5526822790b89d6154393b54" target="_blank" rel="external">招聘网址</a></p>
+<p>招聘流程就2道：</p>
+<ul>
+<li>面谈或网聊：不带颜色的哦，只看基础及简历，顺便了解一些技术能力或特长，不用紧张，当朋友聊天即可。当然您尽可能展现你的技术知识、经验，github是最好的无声宣传。这一道将决定我们是直接谈录用，还是留作业验证能力，还是到此为止。</li>
+<li>最终面谈：根据作业完成情况，跟您最终确定待遇及入职时间，也希望让双方实地了解下。媳妇总要见公婆的嘛。</li>
+</ul>
+<p>有什么办法可以压缩三维数据文件的大小呢，好的算法有借鉴吗？我只要大小在3M以内，但精细度跟原来的是相差不大的效果，原来的大小可能是几十M或更大。</p>
+      </div>
+      <footer class="article-footer">
+        <!--<a data-url="http://xurw.com/2015/05/16/mac_reset/" data-id="ci9r4r5v70067fl39x29cuwci" class="article-share-link">分享到</a>
+        -->
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+        <div class="bdsharebuttonbox">
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到微博"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_count" data-cmd="count"></a>
+</div>
+<script>with(window._bd_share_config={common:{bdSnsKey:{},bdText:"",bdMini:"2",bdMiniList:!1,bdPic:"",bdStyle:"0",bdSize:"16"},share:{},image:{viewList:["sqq","tsina","weixin","fbook","twi"],viewText:"分享到: ",viewSize:"16"},selectShare:{bdContainerClass:null,bdSelectMiniList:["sqq","tsina","weixin","fbook","twi"]}},document)0[(getElementsByTagName("head")[0]||body).appendChild(createElement("script")).src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion="+~(-new Date/36e5)];</script></footer></div></article><!--
+  --></div></section><aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <!--<div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="twitter" href="https://twitter.com/victorwu113" target="_blank"><i id="icon-twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="facebook" href="https://www.facebook.com/wu.victor.526" target="_blank"><i id="icon-facebook" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google_plus" href="https://plus.google.com/u/0/" target="_blank"><i id="icon-google_plus" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/xurwxj" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="http://weibo.com/2514652212/profile?topnav=1&wvr=6" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="rss" href="/rss2.xml" target="_blank"><i id="icon-rss" class="icon"></i></a></li>
+      
+    </ul>
+  </div>-->
+  
+    <nav id="article-nav">
+  
+  
+    <a href="/2015/05/07/1test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">通过atom来写文章</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+  
+  <div class="widgets-container">
+    
+      <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/VPS/" style="font-size:10px">VPS</a><a href="/tags/Yasir/" style="font-size:18.18px">Yasir</a><a href="/tags/blog/" style="font-size:10px">blog</a><a href="/tags/django/" style="font-size:11.82px">django</a><a href="/tags/ftp/" style="font-size:10px">ftp</a><a href="/tags/js/" style="font-size:10px">js</a><a href="/tags/kvm/" style="font-size:10px">kvm</a><a href="/tags/linux/" style="font-size:10.91px">linux</a><a href="/tags/mac/" style="font-size:10px">mac</a><a href="/tags/markdown/" style="font-size:10px">markdown</a><a href="/tags/mongodb/" style="font-size:10px">mongodb</a><a href="/tags/node/" style="font-size:11.82px">node</a><a href="/tags/python/" style="font-size:11.82px">python</a><a href="/tags/sina/" style="font-size:10px">sina</a><a href="/tags/socket/" style="font-size:10px">socket</a><a href="/tags/sync/" style="font-size:10px">sync</a><a href="/tags/tech/" style="font-size:10px">tech</a><a href="/tags/victor/" style="font-size:20px">victor</a><a href="/tags/webkit/" style="font-size:10px">webkit</a><a href="/tags/weibo/" style="font-size:10px">weibo</a><a href="/tags/xp/" style="font-size:10px">xp</a><a href="/tags/主机/" style="font-size:10.91px">主机</a><a href="/tags/人力资源/" style="font-size:10px">人力资源</a><a href="/tags/企业文化/" style="font-size:10.91px">企业文化</a><a href="/tags/修身养性/" style="font-size:14.55px">修身养性</a><a href="/tags/博客/" style="font-size:12.73px">博客</a><a href="/tags/发展/" style="font-size:10px">发展</a><a href="/tags/同步/" style="font-size:11.82px">同步</a><a href="/tags/团队/" style="font-size:10px">团队</a><a href="/tags/年度/" style="font-size:10.91px">年度</a><a href="/tags/微博/" style="font-size:12.73px">微博</a><a href="/tags/总结/" style="font-size:17.27px">总结</a><a href="/tags/成功/" style="font-size:15.45px">成功</a><a href="/tags/技术/" style="font-size:17.27px">技术</a><a href="/tags/教育/" style="font-size:16.36px">教育</a><a href="/tags/照片/" style="font-size:14.55px">照片</a><a href="/tags/生活/" style="font-size:12.73px">生活</a><a href="/tags/空间/" style="font-size:10px">空间</a><a href="/tags/童趣/" style="font-size:10px">童趣</a><a href="/tags/管理/" style="font-size:19.09px">管理</a><a href="/tags/网络/" style="font-size:13.64px">网络</a><a href="/tags/虚拟/" style="font-size:10px">虚拟</a><a href="/tags/购物/" style="font-size:10px">购物</a><a href="/tags/车/" style="font-size:11.82px">车</a><a href="/tags/面试/" style="font-size:10px">面试</a>
+    </div>
+  </div>
+    
+      <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/05/16/mac_reset/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
+              <p class="item-title"><a href="/2015/05/16/mac_reset/" class="title">重装mac及一些记录</a></p>
+              <p class="item-date"><time datetime="2015-05-16T14:14:00.000Z" itemprop="datePublished">2015-05-16</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/05/07/1test/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
+              <p class="item-title"><a href="/2015/05/07/1test/" class="title">通过atom来写文章</a></p>
+              <p class="item-date"><time datetime="2015-05-07T14:38:00.000Z" itemprop="datePublished">2015-05-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/01/07/2014summary/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/家庭生活/">家庭生活</a></p>
+              <p class="item-title"><a href="/2015/01/07/2014summary/" class="title">2014年度总结及2015希望</a></p>
+              <p class="item-date"><time datetime="2015-01-07T15:12:00.000Z" itemprop="datePublished">2015-01-07</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/10/29/git_blog/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
+              <p class="item-title"><a href="/2014/10/29/git_blog/" class="title">用github存放blog</a></p>
+              <p class="item-date"><time datetime="2014-10-29T01:54:08.000Z" itemprop="datePublished">2014-10-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/10/15/manage_memory_20141015/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/运营管理/">运营管理</a></p>
+              <p class="item-title"><a href="/2014/10/15/manage_memory_20141015/" class="title">20141015管理记忆</a></p>
+              <p class="item-date"><time datetime="2014-10-15T01:54:48.000Z" itemprop="datePublished">2014-10-15</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+    
+      <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">七月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">六月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+    
+      <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://www.shining3d.cn" target="_blank">先临三维</a>
+          </li>
+        
+          <li>
+            <a href="http://www.dxy.cn" target="_blank">丁香园</a>
+          </li>
+        
+          <li>
+            <a href="http://www.espark.net" target="_blank">东部软件园</a>
+          </li>
+        
+          <li>
+            <a href="http://www.zhongda.com" target="_blank">浙江数码港</a>
+          </li>
+        
+          <li>
+            <a href="http://www.qfc.cn" target="_blank">轻纺城</a>
+          </li>
+        
+          <li>
+            <a href="http://www.cib.com.cn" target="_blank">兴业银行</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <a href="/" class="logo"></a>
+        &copy; 2015 Victor
+        Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme changed from <a href="//github.com/ppoffice" target="_blank">PPOffice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    <script src="/js/jquery-2.1.3.min.js"></script><script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script><script src="/scrollLoading/main.js" type="text/javascript"></script><script src="/js/html-patch.js" type="text/javascript"></script><script src="/js/script.js" type="text/javascript"></script></div></body>
