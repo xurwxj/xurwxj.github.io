@@ -7,7 +7,7 @@
     <link>http://xurw.com/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[All about victor, hellen, yasir on life,  management and others.]]></description>
-    <pubDate>Sat, 16 May 2015 14:52:19 GMT</pubDate>
+    <pubDate>Sat, 16 May 2015 15:07:38 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -25,6 +25,7 @@
 <p>安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。</p>
 <figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org</span><br></pre></td></tr></table></figure>
 <p>mongodb的replset不知道什么原因，除了一次配置成功外，试了好几次都有问题，而这个配置方法恰恰之前备份的时候漏掉了，那就直接用内置的吧，也够了。</p>
+<p>还有一个比较怪的问题，我备份的数据本身直接来自于mac，备份用的u盘也是用mac格式化的，但恢复回来后，所有中文文件名都变成了乱码，三思不得其解呀。</p>
 <p>最近团队组建在技术团队方面进展不错，希望能组成一个创造力、执行力超强的技术团队，打造一个让大家都有成就感的专业产品，在指定领域的互联网范围内引领。</p>
 <p>在这里，再次呼唤Noder们来加入。</p>
 <p><a href="https://cnodejs.org/topic/5526822790b89d6154393b54" target="_blank" rel="external">招聘网址</a></p>
