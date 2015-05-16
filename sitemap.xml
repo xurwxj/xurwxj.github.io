@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xurw.com/2015/05/07/1test/</loc>
+    <lastmod>2015-05-16T13:42:30.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://xurw.com/aboutus/index.html</loc>
     <lastmod>2015-05-08T14:34:16.000Z</lastmod>
   </url>
@@ -9,11 +14,6 @@
   <url>
     <loc>http://xurw.com/2015/01/07/2014summary/</loc>
     <lastmod>2015-05-08T08:26:30.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://xurw.com/2013/02/28/yasir_securit/</loc>
-    <lastmod>2015-05-08T08:25:31.000Z</lastmod>
   </url>
   
   <url>
@@ -327,11 +327,6 @@
   </url>
   
   <url>
-    <loc>http://xurw.com/2013/03/20/djangojslinux%E2%80%94%E2%80%94hint/</loc>
-    <lastmod>2015-05-08T08:25:31.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://xurw.com/2014/04/11/deprecated_work_from_life/</loc>
     <lastmod>2015-05-08T08:25:31.000Z</lastmod>
   </url>
@@ -437,12 +432,17 @@
   </url>
   
   <url>
-    <loc>http://xurw.com/2015/05/07/1test/</loc>
+    <loc>http://xurw.com/2013/02/28/yasir_securit/</loc>
     <lastmod>2015-05-08T08:25:31.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://xurw.com/2012/11/26/11/</loc>
+    <lastmod>2015-05-08T08:25:31.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xurw.com/2013/03/20/djangojslinuxa%CC%82%C2%80%C2%94a%CC%82%C2%80%C2%94hint/</loc>
     <lastmod>2015-05-08T08:25:31.000Z</lastmod>
   </url>
   
