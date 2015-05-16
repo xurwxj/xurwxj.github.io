@@ -7,7 +7,7 @@
     <link>http://xurw.com/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[All about victor, hellen, yasir on life,  management and others.]]></description>
-    <pubDate>Sat, 16 May 2015 14:29:18 GMT</pubDate>
+    <pubDate>Sat, 16 May 2015 14:52:19 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -21,7 +21,9 @@
       </description>
       <content:encoded><![CDATA[<p>这次系统被扩崩后，发现mac的另外一个好处，只要有启动盘，安装的时候选择原来的硬盘，它会自动修复存在的问题，而你的数据、程序、设置都保留，这个是其它系统所难做到的。</p>
 <p>不过这次，我还是彻底备份数据重新安装了，因为经过多次的试验、测试，系统残留了很多不舒服的东西，原来是因为时间和数据原因，没有特别抽时间去弄，这次一并解决了。</p>
-<p>安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/new_mac.png" alt=""></p>
+<p>安装后，发现，npm还是必须要用国内的镜像，否则太不稳定了。</p>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="keyword">set</span> <span class="keyword">registry</span> <span class="keyword">http</span>://<span class="keyword">registry</span>.cnpmjs.org</span><br></pre></td></tr></table></figure>
 <p>mongodb的replset不知道什么原因，除了一次配置成功外，试了好几次都有问题，而这个配置方法恰恰之前备份的时候漏掉了，那就直接用内置的吧，也够了。</p>
 <p>最近团队组建在技术团队方面进展不错，希望能组成一个创造力、执行力超强的技术团队，打造一个让大家都有成就感的专业产品，在指定领域的互联网范围内引领。</p>
 <p>在这里，再次呼唤Noder们来加入。</p>
@@ -45,7 +47,7 @@
 <p>最近使用atom—&gt;brackets—&gt;atom，原因很简单，因为资源占用的问题，虽然at]]>
       </description>
       <content:encoded><![CDATA[<p>很久没有折腾自己的站点，所有的想法都一般直接放在日历中去记录了，虽然日历中不能记录图片和表格等富媒体格式的内容，但也足够用了，毕竟日常的想法都是比较短的想法</p>
-<p>最近使用atom—&gt;brackets—&gt;atom，原因很简单，因为资源占用的问题，虽然atom有时候快捷键不方便，但毕竟用的时间长点也不会假死，但breakets就会，adobe出来的东西看起来还是不行。</p>
+<p>最近使用atom—&gt;brackets—&gt;atom，原因很简单，因为资源占用的问题，虽然atom有时候快捷键不方便，但毕竟用的时间长点也不会假死，但breakets就会，adobe出来的东西看起来还是不行。<br><img src="/images/QQ20150516.png" alt=""></p>
 <p>非常感谢<a href="https://github.com/zhuochun" target="_blank" rel="external">Zhuochun</a>做的这个插件。</p>
 <p>  也非常感谢<a href="http://laosb.lasteam.net" target="_blank" rel="external">Laosb</a>指出来的拼写错误</p>
 <p>  Laosb: 一个高一的Noder，猜想他的未来会怎样？我现在有的，只是佩服，我在他这个年纪的时候，只知道摆摊卖东西，最高大上的电器是电视和电饭锅，嘿嘿。</p>]]></content:encoded>
@@ -101,7 +103,7 @@
 </ul>
 </li>
 </ol>
-<h1 id="Hellen、Yasir，我们一起努力。">Hellen、Yasir，我们一起努力。</h1>]]></content:encoded>
+<h1 id="Hellen、Yasir，我们一起努力。">Hellen、Yasir，我们一起努力。</h1><p><img src="/images/20142015.png" alt=""></p>]]></content:encoded>
       <comments>http://xurw.com/2015/01/07/2014summary/#disqus_comments</comments>
     </item>
     
@@ -111,9 +113,9 @@
       <guid>http://xurw.com/2014/10/29/git_blog/</guid>
       <pubDate>Wed, 29 Oct 2014 01:54:08 GMT</pubDate>
       <description>
-      <![CDATA[<p>尝试用github来放我的博客，因为速度及多方面的原因，当然最大的原因是免费，呵呵。</p>]]>
+      <![CDATA[<p>尝试用github来放我的博客，因为速度及多方面的原因，当然最大的原因是免费，呵呵。<br><img src="/images/github.png" alt=""></p>]]>
       </description>
-      <content:encoded><![CDATA[<p>尝试用github来放我的博客，因为速度及多方面的原因，当然最大的原因是免费，呵呵。</p>]]></content:encoded>
+      <content:encoded><![CDATA[<p>尝试用github来放我的博客，因为速度及多方面的原因，当然最大的原因是免费，呵呵。<br><img src="/images/github.png" alt=""></p>]]></content:encoded>
       <comments>http://xurw.com/2014/10/29/git_blog/#disqus_comments</comments>
     </item>
     
@@ -129,7 +131,8 @@
       <content:encoded><![CDATA[<p>1、不能只管销售额度、不管利润额度，提成最好是根据预扣成本、预提费用（售后费用）后再进行，提成发放需要根据回款及公司经营状况，一般售后费用占销售额度的10～30%，公司经营状况一般是年底及发生月按比例进行；</p>
 <p>2、不能只要结果、不管过程及投入，特别是营销和研发，一般要有预测，后期跟进分析要做足，营销和研发领域中事件相似性和重复概率是很高的，因此做好预测和分析后，准确率会很高；</p>
 <p>3、一个外表很热闹的公司一般表示它处在黎明前，如果一直很热闹，那说明这公司是绝对没有可能做大、做强的，只能是混日子的公司。黎明前的公司很多死掉了，因为热闹度掌握不好，自己把现金流掐死了，或者是触犯了禁域；</p>
-<p>4、可以与任何公司或个人谈引导成代理或经销商，但实际利益一定要把住，放闸一定要等第2单，否则你放了，毛钱都不会跟你有关系；</p>]]></content:encoded>
+<p>4、可以与任何公司或个人谈引导成代理或经销商，但实际利益一定要把住，放闸一定要等第2单，否则你放了，毛钱都不会跟你有关系；</p>
+<p><img src="/images/manage_memory.png" alt=""></p>]]></content:encoded>
       <comments>http://xurw.com/2014/10/15/manage_memory_20141015/#disqus_comments</comments>
     </item>
     
