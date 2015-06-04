@@ -344,7 +344,7 @@ body {
 }
 #header-title {
   text-align: center;
-  padding: 0px 30px;
+  padding: 15px 0px;
 }
 #header-title:before,
 #header-title:after {
