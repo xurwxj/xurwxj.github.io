@@ -7,8 +7,47 @@
     <link>http://xurw.com/</link>
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     <description><![CDATA[All about victor, hellen, yasir on life,  management and others.]]></description>
-    <pubDate>Sat, 16 May 2015 15:07:38 GMT</pubDate>
+    <pubDate>Thu, 04 Jun 2015 15:40:24 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title><![CDATA[shadowsocks服务器端ubuntu及客户端win7安装配置指南]]></title>
+      <link>http://xurw.com/2015/06/04/shadowsocksguide/</link>
+      <guid>http://xurw.com/2015/06/04/shadowsocksguide/</guid>
+      <pubDate>Thu, 04 Jun 2015 15:21:00 GMT</pubDate>
+      <description>
+      <![CDATA[<p>生活在墙内，但从事互联网，你不得不在必须的时候进行翻墙，这几年一直使用Linux和Mac，所以ssh及sshproxy用来翻墙是很方便的，但凑巧现在运营的同事是用win的，也需要翻墙，Google后发现了shadowsocks.</p>
+<p>好东西，我们有一台墙外的vps]]>
+      </description>
+      <content:encoded><![CDATA[<p>生活在墙内，但从事互联网，你不得不在必须的时候进行翻墙，这几年一直使用Linux和Mac，所以ssh及sshproxy用来翻墙是很方便的，但凑巧现在运营的同事是用win的，也需要翻墙，Google后发现了shadowsocks.</p>
+<p>好东西，我们有一台墙外的vps，刚好可以给需要的人装一个服务器端，然后就可以顺溜翻墙了。</p>
+<h3 id="服务器端安装">服务器端安装</h3><ul>
+<li>apt-get install python-pip python-m2crypto</li>
+<li>pip install shadowsocks</li>
+<li><p>配置文件：json格式，port_password部分是可以增加多个用户的，不同的端口不同的密码给不同的人用</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">server</span>":<span class="value"><span class="string">"xxx.xxx.xxx.xxx"</span></span>,</span><br><span class="line">    "<span class="attribute">port_password</span>":<span class="value">&#123;</span><br><span class="line">	"<span class="attribute">8388</span>": <span class="value"><span class="string">"xxxxx"</span></span><br><span class="line">    </span>&#125;</span>,</span><br><span class="line">    "<span class="attribute">timeout</span>":<span class="value"><span class="number">300</span></span>,</span><br><span class="line">    "<span class="attribute">method</span>":<span class="value"><span class="string">"aes-256-cfb"</span></span>,</span><br><span class="line">    "<span class="attribute">fast_open</span>": <span class="value"><span class="literal">false</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ufw allow 8388/tcp 如果给多人用不同端口的，别忘记ufw也要开端口</p>
+</li>
+<li>vim /etc/init.d/shadowsocks</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span><br><span class="line"></span></span><br><span class="line"><span class="function"><span class="title">start</span></span>()&#123;</span><br><span class="line">       ssserver -c 配置文件路径 <span class="operator">-d</span> start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">stop</span></span>()&#123;</span><br><span class="line">        ssserver -c 配置文件路径 <span class="operator">-d</span> stop</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">        start</span><br><span class="line">        ;;</span><br><span class="line">stop)</span><br><span class="line">        stop</span><br><span class="line">        ;;</span><br><span class="line">reload)</span><br><span class="line">        stop</span><br><span class="line">        start</span><br><span class="line">        ;;</span><br><span class="line">*)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|reload|stop&#125;"</span></span><br><span class="line">        <span class="built_in">exit</span> <span class="number">1</span></span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>chmod +x /etc/init.d/shadowsocks</li>
+<li>update-rc.d shadowsocks defaults</li>
+<li>service shadowsocks reload</li>
+</ul>
+<h3 id="win7客户端安装">win7客户端安装</h3><ul>
+<li>到<a href="http://sourceforge.net/projects/shadowsocksgui/files/dist/" target="_blank" rel="external">http://sourceforge.net/projects/shadowsocksgui/files/dist/</a> 下载客户端，win8要选择带dotnet的版本</li>
+<li>下载解压exe文件到你的程序目录（或你想要它去的目录）</li>
+<li>双击exe文件</li>
+<li>这里按图设置即可：<br><img src="/images/shadowsocks_1.jpg" alt=""></li>
+<li>转到桌面右下角的通知栏图标处,右键那个小飞机，启用代理同时代理模式选择pac模式：<br><img src="/images/shadowsocks_2.jpg" alt=""></li>
+<li>也可以做共享代理~下面图片详细说下<br><img src="/images/shadowsocks_3.jpg" alt=""></li>
+</ul>
+<p>客户端安装的截图我没做，取了网上的，来源于 <a href="http://www.babysaying.net/windows-shadowsocks-fanqiang.html" target="_blank" rel="external">http://www.babysaying.net/windows-shadowsocks-fanqiang.html</a></p>]]></content:encoded>
+      <comments>http://xurw.com/2015/06/04/shadowsocksguide/#disqus_comments</comments>
+    </item>
     
     <item>
       <title><![CDATA[重装mac及一些记录]]></title>
@@ -595,55 +634,6 @@
       <content:encoded><![CDATA[<p>有一段时间没去大超市了，一听可以去超市，Yasir首先要求的是能否在超市里买那个现炒的混合面吃，让人一听就笑场。<br>到了超市，看到东西，他还是老习惯，不贪心，会有选择的去拿，拿的时候就会问是否可以买，开开玩笑跟他讲，你选择了并不代表最后会买，如果不买，要自己拿回去放好，他会主动的要求放弃一些东西，呵呵。<br><img src="/images/yasir20130920.jpg" alt="" title="Yasir on 2013-09-20"><br>习惯上，每次去，都会再买个吴山烤鸡，这次还是一样，排队的时候，Yasir主动和后面的叔叔聊天，然后就出现以下的对话：<br>叔叔：小朋友知道上面写了什么吗？<br>Yasir：吴山烤鸭<br>叔叔：那你要买什么呀？<br>Yasir：我要买鸡<br>叔叔：那为什么是吴山烤鸭呢？<br>Yasir：就是吴山烤鸭，那个吴我认识，我姓吴<br>叔叔：那你如果买鸭子，是不是就是吴山烤鸡呢？<br>Yasir：是啊。啊。。。不对，本来就是吴山烤鸡，叔叔你怎么不认字呢？<br>背景，Yasir一直在前面看边上挂着的烤鸭，老是说那个鸭子好大、好肥，呵呵。估计聊天的时候思路还在那个位置，然后就出现这个然后了，嘿嘿。<br>结果晚上睡觉的时候，要求我们给他讲故事，然后我就讲有个小朋友这样那样，重复了早上发生的事情，只是没有点名，Yasir听了2句就马上对号入座了，开始捣乱要求我不许说他的故事，呵呵，看来很好面子呀。<br>呵呵，下午和Yasir一起回顾他小时候的照片、录像，直到2岁左右，他才认出自己来，之前一个劲的说那个小朋友是不是谁的谁的孩子，呵呵。<br>经常吃饭的时候，催的急了，会说肚子疼，看来要让孩子安安稳稳的先吃好，大不了，觉得时间长了就不用吃了，这样下顿还是会多吃的，现在的孩子是饿不着的，大人不用管的太多，呵呵。其实好多事都这样，多鼓励他们去尝试，不用去干预太多，这样才能让他们能主动、勇敢、独立，大人要做的，就是鼓励及方向指引，其它的顺其自然即可。</p>
 <p>Yasir，加油，爸妈相信你有自己的生活，而且一定可以自己做到顺心如意。</p>]]></content:encoded>
       <comments>http://xurw.com/2013/09/20/favor_guy/#disqus_comments</comments>
-    </item>
-    
-    <item>
-      <title><![CDATA[企业信息化中的技术架构或平台的一些想法]]></title>
-      <link>http://xurw.com/2013/09/16/tech_platform/</link>
-      <guid>http://xurw.com/2013/09/16/tech_platform/</guid>
-      <pubDate>Mon, 16 Sep 2013 00:57:14 GMT</pubDate>
-      <description>
-      <![CDATA[<p>我们希望平台能够达到以下几个目的：</p>
-<ol>
-<li>响应式的体验；</li>
-<li>能支持桌面及移动设施；</li>
-<li>响应速度平均在4秒左右及以下；</li>
-<li>结构维护简单，调试方便；</li>
-<li>数据可以2、3备份，能集中闲散的存储资源；]]>
-      </description>
-      <content:encoded><![CDATA[<p>我们希望平台能够达到以下几个目的：</p>
-<ol>
-<li>响应式的体验；</li>
-<li>能支持桌面及移动设施；</li>
-<li>响应速度平均在4秒左右及以下；</li>
-<li>结构维护简单，调试方便；</li>
-<li>数据可以2、3备份，能集中闲散的存储资源；</li>
-<li>支持定时任务及队列；</li>
-<li>能支持企业网站管理、内部运管管理、商务平台；</li>
-<li>能支持企业办公虚拟；</li>
-<li>邮件利用外部的成熟系统，但内部有一个统一的收发服务器；</li>
-<li>能与打印、传真、会议、培训、条码枪等设施或需求衔接，至少可以连通或者是统一登录；</li>
-<li>消息提示；</li>
-</ol>
-<p>ok，这个需求够庞大、复杂了，可能相比大规模网站来说，用户规模是远比不上，但复杂度并不差多少。有这样的现成系统吗？找了这么多看，没看到，但每一块都有一个或多个备选的对象，那我们试着来做胶水这个工作吧：</p>
-<ol>
-<li>响应式的体验：所有都做响应式是不现实的，局部或集中响应式体验就够了，比如待办事项、消息，用nodejs+socket来实现似乎是我们django的恰当补充，有更好的吗？</li>
-<li>jquery mobile行吧？</li>
-<li>速度平均在4秒左右以及下：尽可能利用客户端进行渲染，模板用jinja2，数据库启用主从，然后再根据情况启用缓存，千兆的网络，有很多同志想这个条件要做到应该很简单，但现实是，面对复杂的逻辑、全局权限和行级权限判断后，速度要达到这个有点难；</li>
-<li>结构维护简单，调试方便：这个实际上是受限于需求，但我们有个原则，就是一定要基于Linux，哪怕有应用要跑win，我们也要在虚拟机里跑；</li>
-<li>数据可以2、3备份，可以集中闲散资源：glusterfs这个还是能比较好满足的，再结合raid1，想丢数据都难；下载可以整合ftp服务器；不过有什么办法可以把一堆算是垃圾的电脑能集中到计算平台去吗？hadoop或openstack？</li>
-<li>定时任务及队列：从celery到uwsgi，结合系统cron，最多再结合rabbitmq，似乎已经足够应付当前及未来可计的规模；</li>
-<li>网站、商务及管理平台：主要基于django进行；</li>
-<li>企业办公虚拟：proxmox是非常不错的选择，1变3-5，再结合瘦客户机，我们要3-5人在同一虚拟机上办公，不是问题；</li>
-<li>邮件：网易、腾讯、google的免费已经足够支持企业的需求，但有没有一个收发服务器，它帮干2件事就可以了，自动收、代理发，这样能保证邮件数据及稳定性；有人提到说postfix本身就支持，但问题在于代理发的时候，它是统一的用户出去的；有人说基于imap协议，只是在收上搞一个处理，可以保存到本地即可，也是这也是个办法，呵呵。</li>
-<li>与各种设施衔接：在当今技术已经不是问题；</li>
-<li>消息提示：xmpp的openfire或是socket.io都能解决，呵呵；</li>
-</ol>
-<p>web方式，再加上基于Webkit的客户端，是否就满足了所有呢？噢，对，还要考虑本地数据和远程数据的同步问题，这个搞个sqllite来保存数据可以吧，考虑部分数据的本地化，比如聊天记录、草稿、邮件、通讯录、组织结构、便笺类的工具，其它就算了吧，还是走服务器端保存；</p>
-<p>服务器每台做raid1及至少2台的集群，解决单点问题了吧，把所有网卡都bond起来，然后所有应用服务器都通过docker来解决，迁移的问题也解决了吧，嗯，再前端加Nginx或Haproxy，再前端用F5或路由映射，就这样弄哦。</p>
-<p>如果阿里云服务器也装个docker，那会怎么样呢？把程序放到阿里云上，然后本地统一处理非数据库中的数据，是否很好呢？</p>
-<p>然后把数据结构和流程尽可能的小粒度、模块化，便于适应企业发展过程中的调整。</p>]]></content:encoded>
-      <comments>http://xurw.com/2013/09/16/tech_platform/#disqus_comments</comments>
     </item>
     
   </channel>
