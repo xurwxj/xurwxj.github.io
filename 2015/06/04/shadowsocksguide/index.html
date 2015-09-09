@@ -18,9 +18,10 @@ apt-get install python-pip python">
 好东西，我们有一台墙外的vps，刚好可以给需要的人装一个服务器端，然后就可以顺溜翻墙了。
 服务器端安装
 apt-get install python-pip python">
-<meta property="og:image" content="/images/shadowsocks_1.jpg">
-<meta property="og:image" content="/images/shadowsocks_2.jpg">
-<meta property="og:image" content="/images/shadowsocks_3.jpg">
+<meta property="og:image" content="http://xurw.com/images/shadowsocks_1.jpg">
+<meta property="og:image" content="http://xurw.com/images/shadowsocks_2.jpg">
+<meta property="og:image" content="http://xurw.com/images/shadowsocks_3.jpg">
+<meta property="og:updated_time" content="2015-06-04T15:40:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shadowsocks服务器端ubuntu及客户端win7安装配置指南">
 <meta name="twitter:description" content="生活在墙内，但从事互联网，你不得不在必须的时候进行翻墙，这几年一直使用Linux和Mac，所以ssh及sshproxy用来翻墙是很方便的，但凑巧现在运营的同事是用win的，也需要翻墙，Google后发现了shadowsocks.
@@ -124,13 +125,13 @@ apt-get install python-pip python">
 <li>apt-get install python-pip python-m2crypto</li>
 <li>pip install shadowsocks</li>
 <li><p>配置文件：json格式，port_password部分是可以增加多个用户的，不同的端口不同的密码给不同的人用</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">server</span>":<span class="value"><span class="string">"xxx.xxx.xxx.xxx"</span></span>,</span><br><span class="line">    "<span class="attribute">port_password</span>":<span class="value">&#123;</span><br><span class="line">	"<span class="attribute">8388</span>": <span class="value"><span class="string">"xxxxx"</span></span><br><span class="line">    </span>&#125;</span>,</span><br><span class="line">    "<span class="attribute">timeout</span>":<span class="value"><span class="number">300</span></span>,</span><br><span class="line">    "<span class="attribute">method</span>":<span class="value"><span class="string">"aes-256-cfb"</span></span>,</span><br><span class="line">    "<span class="attribute">fast_open</span>": <span class="value"><span class="literal">false</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#10;    &#34;server&#34;:&#34;xxx.xxx.xxx.xxx&#34;,&#10;    &#34;port_password&#34;:&#123;&#10;&#9;&#34;8388&#34;: &#34;xxxxx&#34;&#10;    &#125;,&#10;    &#34;timeout&#34;:300,&#10;    &#34;method&#34;:&#34;aes-256-cfb&#34;,&#10;    &#34;fast_open&#34;: false&#10;&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>ufw allow 8388/tcp 如果给多人用不同端口的，别忘记ufw也要开端口</p>
 </li>
 <li>vim /etc/init.d/shadowsocks</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/sh</span><br><span class="line"></span></span><br><span class="line"><span class="function"><span class="title">start</span></span>()&#123;</span><br><span class="line">       ssserver -c 配置文件路径 <span class="operator">-d</span> start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">stop</span></span>()&#123;</span><br><span class="line">        ssserver -c 配置文件路径 <span class="operator">-d</span> stop</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">start)</span><br><span class="line">        start</span><br><span class="line">        ;;</span><br><span class="line">stop)</span><br><span class="line">        stop</span><br><span class="line">        ;;</span><br><span class="line">reload)</span><br><span class="line">        stop</span><br><span class="line">        start</span><br><span class="line">        ;;</span><br><span class="line">*)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> &#123;start|reload|stop&#125;"</span></span><br><span class="line">        <span class="built_in">exit</span> <span class="number">1</span></span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh&#10;&#10;start()&#123;&#10;       ssserver -c &#37197;&#32622;&#25991;&#20214;&#36335;&#24452; -d start&#10;&#125;&#10;&#10;stop()&#123;&#10;        ssserver -c &#37197;&#32622;&#25991;&#20214;&#36335;&#24452; -d stop&#10;&#125;&#10;&#10;case &#34;$1&#34; in&#10;start)&#10;        start&#10;        ;;&#10;stop)&#10;        stop&#10;        ;;&#10;reload)&#10;        stop&#10;        start&#10;        ;;&#10;*)&#10;        echo &#34;Usage: $0 &#123;start|reload|stop&#125;&#34;&#10;        exit 1&#10;        ;;&#10;esac</span><br></pre></td></tr></table></figure>
 <ul>
 <li>chmod +x /etc/init.d/shadowsocks</li>
 <li>update-rc.d shadowsocks defaults</li>
@@ -147,7 +148,7 @@ apt-get install python-pip python">
 <p>客户端安装的截图我没做，取了网上的，来源于 <a href="http://www.babysaying.net/windows-shadowsocks-fanqiang.html" target="_blank" rel="external">http://www.babysaying.net/windows-shadowsocks-fanqiang.html</a></p>
       </div>
       <footer class="article-footer">
-        <!--<a data-url="http://xurw.com/2015/06/04/shadowsocksguide/" data-id="ciaicxcnz003lqk395p46z9oo" class="article-share-link">分享到</a>
+        <!--<a data-url="http://xurw.com/2015/06/04/shadowsocksguide/" data-id="ciec1p0ay003llu39a55ihoy9" class="article-share-link">分享到</a>
         -->
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/翻墙/">翻墙</a></li></ul>
         <div class="bdsharebuttonbox">
@@ -182,6 +183,16 @@ apt-get install python-pip python">
   
     <nav id="article-nav">
   
+    <a href="/2015/09/09/job-or-career/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          工作与事业杂思
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
   
     <a href="/2015/05/16/mac_reset/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
@@ -196,7 +207,7 @@ apt-get install python-pip python">
       <div class="widget-wrap widget-float">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/VPS/" style="font-size:10px">VPS</a><a href="/tags/Yasir/" style="font-size:18.33px">Yasir</a><a href="/tags/blog/" style="font-size:10px">blog</a><a href="/tags/django/" style="font-size:11.67px">django</a><a href="/tags/ftp/" style="font-size:10px">ftp</a><a href="/tags/js/" style="font-size:10px">js</a><a href="/tags/kvm/" style="font-size:10px">kvm</a><a href="/tags/linux/" style="font-size:10.83px">linux</a><a href="/tags/mac/" style="font-size:10px">mac</a><a href="/tags/markdown/" style="font-size:10px">markdown</a><a href="/tags/mongodb/" style="font-size:10px">mongodb</a><a href="/tags/node/" style="font-size:11.67px">node</a><a href="/tags/python/" style="font-size:11.67px">python</a><a href="/tags/sina/" style="font-size:10px">sina</a><a href="/tags/socket/" style="font-size:10px">socket</a><a href="/tags/sync/" style="font-size:10px">sync</a><a href="/tags/tech/" style="font-size:10px">tech</a><a href="/tags/victor/" style="font-size:20px">victor</a><a href="/tags/webkit/" style="font-size:10px">webkit</a><a href="/tags/weibo/" style="font-size:10px">weibo</a><a href="/tags/xp/" style="font-size:10px">xp</a><a href="/tags/主机/" style="font-size:10.83px">主机</a><a href="/tags/人力资源/" style="font-size:10px">人力资源</a><a href="/tags/企业文化/" style="font-size:10.83px">企业文化</a><a href="/tags/修身养性/" style="font-size:14.17px">修身养性</a><a href="/tags/博客/" style="font-size:12.5px">博客</a><a href="/tags/发展/" style="font-size:10px">发展</a><a href="/tags/同步/" style="font-size:11.67px">同步</a><a href="/tags/团队/" style="font-size:10px">团队</a><a href="/tags/年度/" style="font-size:10.83px">年度</a><a href="/tags/微博/" style="font-size:12.5px">微博</a><a href="/tags/总结/" style="font-size:16.67px">总结</a><a href="/tags/成功/" style="font-size:15px">成功</a><a href="/tags/技术/" style="font-size:17.5px">技术</a><a href="/tags/教育/" style="font-size:15.83px">教育</a><a href="/tags/照片/" style="font-size:14.17px">照片</a><a href="/tags/生活/" style="font-size:12.5px">生活</a><a href="/tags/空间/" style="font-size:10px">空间</a><a href="/tags/童趣/" style="font-size:10px">童趣</a><a href="/tags/管理/" style="font-size:19.17px">管理</a><a href="/tags/网络/" style="font-size:13.33px">网络</a><a href="/tags/翻墙/" style="font-size:10px">翻墙</a><a href="/tags/虚拟/" style="font-size:10px">虚拟</a><a href="/tags/购物/" style="font-size:10px">购物</a><a href="/tags/车/" style="font-size:11.67px">车</a><a href="/tags/面试/" style="font-size:10px">面试</a>
+      <a href="/tags/VPS/" style="font-size:10px">VPS</a> <a href="/tags/Yasir/" style="font-size:18.33px">Yasir</a> <a href="/tags/blog/" style="font-size:10px">blog</a> <a href="/tags/django/" style="font-size:11.67px">django</a> <a href="/tags/ftp/" style="font-size:10px">ftp</a> <a href="/tags/js/" style="font-size:10px">js</a> <a href="/tags/kvm/" style="font-size:10px">kvm</a> <a href="/tags/linux/" style="font-size:10.83px">linux</a> <a href="/tags/mac/" style="font-size:10px">mac</a> <a href="/tags/markdown/" style="font-size:10px">markdown</a> <a href="/tags/mongodb/" style="font-size:10px">mongodb</a> <a href="/tags/node/" style="font-size:11.67px">node</a> <a href="/tags/python/" style="font-size:11.67px">python</a> <a href="/tags/sina/" style="font-size:10px">sina</a> <a href="/tags/socket/" style="font-size:10px">socket</a> <a href="/tags/sync/" style="font-size:10px">sync</a> <a href="/tags/tech/" style="font-size:10px">tech</a> <a href="/tags/victor/" style="font-size:20px">victor</a> <a href="/tags/webkit/" style="font-size:10px">webkit</a> <a href="/tags/weibo/" style="font-size:10px">weibo</a> <a href="/tags/xp/" style="font-size:10px">xp</a> <a href="/tags/主机/" style="font-size:10.83px">主机</a> <a href="/tags/事业/" style="font-size:10px">事业</a> <a href="/tags/人力资源/" style="font-size:10px">人力资源</a> <a href="/tags/企业文化/" style="font-size:10.83px">企业文化</a> <a href="/tags/修身养性/" style="font-size:14.17px">修身养性</a> <a href="/tags/博客/" style="font-size:12.5px">博客</a> <a href="/tags/发展/" style="font-size:10px">发展</a> <a href="/tags/同步/" style="font-size:11.67px">同步</a> <a href="/tags/团队/" style="font-size:10px">团队</a> <a href="/tags/年度/" style="font-size:10.83px">年度</a> <a href="/tags/微博/" style="font-size:12.5px">微博</a> <a href="/tags/总结/" style="font-size:16.67px">总结</a> <a href="/tags/成功/" style="font-size:15px">成功</a> <a href="/tags/技术/" style="font-size:17.5px">技术</a> <a href="/tags/教育/" style="font-size:15.83px">教育</a> <a href="/tags/照片/" style="font-size:14.17px">照片</a> <a href="/tags/生活/" style="font-size:12.5px">生活</a> <a href="/tags/空间/" style="font-size:10px">空间</a> <a href="/tags/童趣/" style="font-size:10px">童趣</a> <a href="/tags/管理/" style="font-size:19.17px">管理</a> <a href="/tags/网络/" style="font-size:13.33px">网络</a> <a href="/tags/翻墙/" style="font-size:10px">翻墙</a> <a href="/tags/虚拟/" style="font-size:10px">虚拟</a> <a href="/tags/购物/" style="font-size:10px">购物</a> <a href="/tags/车/" style="font-size:11.67px">车</a> <a href="/tags/面试/" style="font-size:10px">面试</a>
     </div>
   </div>
     
@@ -204,6 +215,23 @@ apt-get install python-pip python">
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/09/09/job-or-career/" class="thumbnail">
+  
+    <span style="background-image:url(/images/job_or_career.jpg)" alt="工作与事业杂思" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/运营管理/">运营管理</a></p>
+              <p class="item-title"><a href="/2015/09/09/job-or-career/" class="title">工作与事业杂思</a></p>
+              <p class="item-date"><time datetime="2015-09-09T00:21:49.000Z" itemprop="datePublished">2015-09-09</time></p>
+            </div>
+          </li>
         
           <li>
             
@@ -273,23 +301,6 @@ apt-get install python-pip python">
             </div>
           </li>
         
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2014/10/29/git_blog/" class="thumbnail">
-  
-    <span style="background-image:url(/images/github.png)" alt="用github存放blog" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/其它/">其它</a></p>
-              <p class="item-title"><a href="/2014/10/29/git_blog/" class="title">用github存放blog</a></p>
-              <p class="item-date"><time datetime="2014-10-29T01:54:08.000Z" itemprop="datePublished">2014-10-29</time></p>
-            </div>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -297,7 +308,7 @@ apt-get install python-pip python">
       <div class="widget-wrap widget-list">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">七月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">六月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">九月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">二月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/10/">十月 2013</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/09/">九月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">八月 2013</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02/">二月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/01/">一月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/07/">七月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/06/">六月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
     
